@@ -60,20 +60,20 @@ namespace Restorant.Checkout.Tests.Steps
             scenarioContext[TableNumberKey] = order.TableNumber;
         }
 
-        [When("Clients requested a bill")]
-        public void WhenClientsRequestedABill()
+        [When("Clients request a bill")]
+        public void WhenClientsRequestABill()
         {
             var tableNumber = scenarioContext.Get<int>(TableNumberKey);
 
-            double bill = _checkoutService.Value.GetTableBill(tableNumber);
+            decimal bill = _checkoutService.Value.GetTableBill(tableNumber);
 
             scenarioContext[TableBillKey] = bill;
         }
 
-        [Then("Clients assert bill amount equals to {double} pounds sterling")]
-        public void ClientsAssertBillAmountEqualsToPoundsSterling(double expectedBill)
+        [Then("Clients assert bill amount equals to {decimal} pounds sterling")]
+        public void ClientsAssertBillAmountEqualsToPoundsSterling(decimal expectedBill)
         {
-            var actualBill = scenarioContext.Get<double>(TableBillKey);
+            var actualBill = scenarioContext.Get<decimal>(TableBillKey);
 
             actualBill.DefaultRound().Should().Be(expectedBill.DefaultRound());
         }

@@ -39,7 +39,8 @@ namespace Restaurant.Checkout.Tests.Features
         public static async System.Threading.Tasks.Task FeatureSetupAsync()
         {
             testRunner = Reqnroll.TestRunnerManager.GetTestRunnerForAssembly(null, Reqnroll.xUnit.ReqnrollPlugin.XUnitParallelWorkerTracker.Instance.GetWorkerId());
-            Reqnroll.FeatureInfo featureInfo = new Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tests/Features", "CheckoutServiceTests", null, ProgrammingLanguage.CSharp, featureTags);
+            Reqnroll.FeatureInfo featureInfo = new Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tests/Features", "CheckoutServiceTests", "\tTesting new endpoint that will calculate the total of the order, and add a 10% s" +
+                    "ervice charge on food. \r\n\tDrinks have a 30% discount when ordered before 19:00", ProgrammingLanguage.CSharp, featureTags);
             await testRunner.OnFeatureStartAsync(featureInfo);
         }
         
@@ -78,7 +79,7 @@ namespace Restaurant.Checkout.Tests.Features
         
         public virtual async System.Threading.Tasks.Task FeatureBackgroundAsync()
         {
-#line 3
+#line 5
 #line hidden
             Reqnroll.Table table1 = new Reqnroll.Table(new string[] {
                         "Starters",
@@ -93,8 +94,8 @@ namespace Restaurant.Checkout.Tests.Features
                         "£2.50",
                         "10%",
                         "30%",
-                        "19:00 - 23:00"});
-#line 4
+                        "10:00 - 19:00"});
+#line 6
  await testRunner.GivenAsync("Restaurant opens with menu by set cost", ((string)(null)), table1, "Given ");
 #line hidden
         }
@@ -121,7 +122,7 @@ namespace Restaurant.Checkout.Tests.Features
                     "checkout"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             Reqnroll.ScenarioInfo scenarioInfo = new Reqnroll.ScenarioInfo("Checkout Service - Standard Order - Check bill calculated correctly", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 9
+#line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -131,7 +132,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 3
+#line 5
 await this.FeatureBackgroundAsync();
 #line hidden
                 Reqnroll.Table table2 = new Reqnroll.Table(new string[] {
@@ -146,14 +147,14 @@ await this.FeatureBackgroundAsync();
                             "4",
                             "4",
                             "16:00"});
-#line 10
- await testRunner.WhenAsync("Clients make an order", ((string)(null)), table2, "When ");
+#line 12
+  await testRunner.WhenAsync("Clients make an order", ((string)(null)), table2, "When ");
 #line hidden
-#line 13
-  await testRunner.AndAsync("Clients requested a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
+#line 15
+  await testRunner.AndAsync("Clients request a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
 #line hidden
-#line 14
- await testRunner.ThenAsync("Clients assert bill amount equals to 56.10 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
+#line 16
+  await testRunner.ThenAsync("Clients assert bill amount equals to 56.10 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -171,7 +172,7 @@ await this.FeatureBackgroundAsync();
                     "checkout"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             Reqnroll.ScenarioInfo scenarioInfo = new Reqnroll.ScenarioInfo("Checkout Service - Extended Order - Check bill calculated correctly", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 17
+#line 19
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -181,7 +182,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 3
+#line 5
 await this.FeatureBackgroundAsync();
 #line hidden
                 Reqnroll.Table table3 = new Reqnroll.Table(new string[] {
@@ -196,14 +197,14 @@ await this.FeatureBackgroundAsync();
                             "2",
                             "2",
                             "18:59"});
-#line 18
- await testRunner.WhenAsync("Clients make an order", ((string)(null)), table3, "When ");
+#line 20
+  await testRunner.WhenAsync("Clients make an order", ((string)(null)), table3, "When ");
 #line hidden
-#line 21
-  await testRunner.AndAsync("Clients requested a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
+#line 23
+  await testRunner.AndAsync("Clients request a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
 #line hidden
-#line 22
- await testRunner.ThenAsync("Clients assert bill amount equals to 23.65 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
+#line 24
+  await testRunner.ThenAsync("Clients assert bill amount equals to 23.65 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
 #line hidden
                 Reqnroll.Table table4 = new Reqnroll.Table(new string[] {
                             "TableNumber",
@@ -215,14 +216,14 @@ await this.FeatureBackgroundAsync();
                             "2",
                             "2",
                             "20:00"});
-#line 23
- await testRunner.WhenAsync("Clients extend an order", ((string)(null)), table4, "When ");
+#line 25
+  await testRunner.WhenAsync("Clients extend an order", ((string)(null)), table4, "When ");
 #line hidden
-#line 26
-  await testRunner.AndAsync("Clients requested a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
+#line 28
+  await testRunner.AndAsync("Clients request a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
 #line hidden
-#line 27
- await testRunner.ThenAsync("Clients assert bill amount equals to 44.55 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
+#line 29
+  await testRunner.ThenAsync("Clients assert bill amount equals to 44.55 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -240,7 +241,7 @@ await this.FeatureBackgroundAsync();
                     "checkout"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             Reqnroll.ScenarioInfo scenarioInfo = new Reqnroll.ScenarioInfo("Checkout Service - Partially Canceled Order - Check bill calculated correctly", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 30
+#line 32
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -250,7 +251,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 3
+#line 5
 await this.FeatureBackgroundAsync();
 #line hidden
                 Reqnroll.Table table5 = new Reqnroll.Table(new string[] {
@@ -265,14 +266,14 @@ await this.FeatureBackgroundAsync();
                             "1",
                             "4",
                             "19:00"});
-#line 31
+#line 33
  await testRunner.WhenAsync("Clients make an order", ((string)(null)), table5, "When ");
 #line hidden
-#line 34
-  await testRunner.AndAsync("Clients requested a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
+#line 36
+  await testRunner.AndAsync("Clients request a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
 #line hidden
-#line 35
- await testRunner.ThenAsync("Clients assert bill amount equals to 23.10 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
+#line 37
+  await testRunner.ThenAsync("Clients assert bill amount equals to 23.10 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
 #line hidden
                 Reqnroll.Table table6 = new Reqnroll.Table(new string[] {
                             "TableNumber",
@@ -282,14 +283,14 @@ await this.FeatureBackgroundAsync();
                             "1",
                             "1",
                             "19:01"});
-#line 36
- await testRunner.WhenAsync("Clients partially cancel an order", ((string)(null)), table6, "When ");
+#line 38
+  await testRunner.WhenAsync("Clients partially cancel an order", ((string)(null)), table6, "When ");
 #line hidden
-#line 39
-  await testRunner.AndAsync("Clients requested a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
+#line 41
+  await testRunner.AndAsync("Clients request a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
 #line hidden
-#line 40
- await testRunner.ThenAsync("Clients assert bill amount equals to 20.35 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
+#line 42
+  await testRunner.ThenAsync("Clients assert bill amount equals to 20.35 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

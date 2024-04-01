@@ -5,13 +5,13 @@ namespace Restorant.Tests.Application
 {
     public class CheckoutService
     {
-        private static readonly TimeOnly DrinksDiscountStartTime = new (19, 0, 0, 0);
+        private static readonly TimeOnly DrinksDiscountEndTime = new (19, 0, 0, 0);
 
         private readonly Lazy<List<OrderDto>> _orders;
 
         public CheckoutService()
         {
-            _orders = new Lazy<List<OrderDto>>(() => new List<OrderDto>());
+            _orders = new Lazy<List<OrderDto>>(() => []);
         }
 
         public void AddNewOrder(OrderDto order)
@@ -39,7 +39,7 @@ namespace Restorant.Tests.Application
             existingOrder.DrinksCount -= order.DrinksCount;
         }
 
-        public double GetTableBill(int tableNumber)
+        public decimal GetTableBill(int tableNumber)
         {
             IEnumerable<OrderDto> tableOrders = _orders.Value.Where(x => x.TableNumber == tableNumber);
 
@@ -48,14 +48,14 @@ namespace Restorant.Tests.Application
                 throw new Exception($"Table {tableNumber} orders are NOT found. Please, check table number or create new order");
             }
 
-            double bill = 0.00;
+            decimal bill = 0.00m;
 
             foreach (OrderDto order in tableOrders)
             {
                 bill += order.StartersCount * Price.StartersCost;
                 bill += order.MainsCount * Price.MainsCost;
 
-                if (order.OrderTime >= DrinksDiscountStartTime)
+                if (order.OrderTime >= DrinksDiscountEndTime)
                 {
                     bill += order.DrinksCount * Price.DrinksCost;
                 }
