@@ -154,7 +154,7 @@ await this.FeatureBackgroundAsync();
   await testRunner.AndAsync("Clients request a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
 #line hidden
 #line 16
-  await testRunner.ThenAsync("Clients assert bill amount equals to 56.10 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
+  await testRunner.ThenAsync("Clients assert bill amount equals to 55.40 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -204,7 +204,7 @@ await this.FeatureBackgroundAsync();
   await testRunner.AndAsync("Clients request a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
 #line hidden
 #line 24
-  await testRunner.ThenAsync("Clients assert bill amount equals to 23.65 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
+  await testRunner.ThenAsync("Clients assert bill amount equals to 23.30 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
 #line hidden
                 Reqnroll.Table table4 = new Reqnroll.Table(new string[] {
                             "TableNumber",
@@ -223,7 +223,7 @@ await this.FeatureBackgroundAsync();
   await testRunner.AndAsync("Clients request a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
 #line hidden
 #line 29
-  await testRunner.ThenAsync("Clients assert bill amount equals to 44.55 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
+  await testRunner.ThenAsync("Clients assert bill amount equals to 43.70 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -273,7 +273,7 @@ await this.FeatureBackgroundAsync();
   await testRunner.AndAsync("Clients request a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
 #line hidden
 #line 37
-  await testRunner.ThenAsync("Clients assert bill amount equals to 23.10 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
+  await testRunner.ThenAsync("Clients assert bill amount equals to 22.10 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
 #line hidden
                 Reqnroll.Table table6 = new Reqnroll.Table(new string[] {
                             "TableNumber",
@@ -290,7 +290,7 @@ await this.FeatureBackgroundAsync();
   await testRunner.AndAsync("Clients request a bill", ((string)(null)), ((Reqnroll.Table)(null)), "* ");
 #line hidden
 #line 42
-  await testRunner.ThenAsync("Clients assert bill amount equals to 20.35 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
+  await testRunner.ThenAsync("Clients assert bill amount equals to 19.60 pounds sterling", ((string)(null)), ((Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

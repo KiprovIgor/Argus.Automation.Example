@@ -52,20 +52,16 @@ namespace Restorant.Tests.Application
 
             foreach (OrderDto order in tableOrders)
             {
-                bill += order.StartersCount * Price.StartersCost;
-                bill += order.MainsCount * Price.MainsCost;
+                decimal foodBillWithCharge = (order.StartersCount * Price.StartersCost + order.MainsCount * Price.MainsCost) * (1 + Price.ServiceCharge);
+                decimal drinksBill = order.DrinksCount * Price.DrinksCost;
 
-                if (order.OrderTime >= DrinksDiscountEndTime)
+                if (order.OrderTime < DrinksDiscountEndTime)
                 {
-                    bill += order.DrinksCount * Price.DrinksCost;
+                    drinksBill *= (1 - Price.DrinksDiscount);
                 }
-                else
-                {
-                    bill += order.DrinksCount * Price.DrinksCost * (1 - Price.DrinksDiscount);
-                }
+
+                bill += ( foodBillWithCharge + drinksBill );
             }
-
-            bill += bill * Price.ServiceCharge;
 
             if (bill <= 0)
             {

@@ -13,7 +13,7 @@ Scenario: Checkout Service - Standard Order - Check bill calculated correctly
 		| TableNumber | StartersCount | MainsCount | DrinksCount | OrderTime |
 		| 1           | 4             | 4          | 4           | 16:00     |
 		* Clients request a bill
-	 Then Clients assert bill amount equals to 56.10 pounds sterling
+	 Then Clients assert bill amount equals to 55.40 pounds sterling
 
 @TEST-2 @checkout
 Scenario: Checkout Service - Extended Order - Check bill calculated correctly
@@ -21,12 +21,12 @@ Scenario: Checkout Service - Extended Order - Check bill calculated correctly
 		| TableNumber | StartersCount | MainsCount | DrinksCount | OrderTime |
 		| 1           | 1             | 2          | 2           | 18:59     |
 		* Clients request a bill
-	 Then Clients assert bill amount equals to 23.65 pounds sterling
+	 Then Clients assert bill amount equals to 23.30 pounds sterling
 	 When Clients extend an order
 		| TableNumber | MainsCount | DrinksCount | OrderTime |
 		| 1           | 2          | 2           | 20:00     |
 		* Clients request a bill
-	 Then Clients assert bill amount equals to 44.55 pounds sterling
+	 Then Clients assert bill amount equals to 43.70 pounds sterling
 
 @TEST-3 @checkout
 Scenario: Checkout Service - Partially Canceled Order - Check bill calculated correctly
@@ -34,9 +34,9 @@ Scenario: Checkout Service - Partially Canceled Order - Check bill calculated co
 		| TableNumber | StartersCount | MainsCount | DrinksCount | OrderTime |
 		| 1           | 1             | 1          | 4           | 19:00     |
 		* Clients request a bill
-	 Then Clients assert bill amount equals to 23.10 pounds sterling
+	 Then Clients assert bill amount equals to 22.10 pounds sterling
 	 When Clients partially cancel an order
 		| TableNumber | DrinksCount | OrderTime |
 		| 1           | 1           | 19:01     |
 		* Clients request a bill
-	 Then Clients assert bill amount equals to 20.35 pounds sterling
+	 Then Clients assert bill amount equals to 19.60 pounds sterling
